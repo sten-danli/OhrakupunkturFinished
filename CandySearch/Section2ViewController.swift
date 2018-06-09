@@ -22,6 +22,7 @@ class Section2ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
+        
     }
 
     override func didReceiveMemoryWarning() {
