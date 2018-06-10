@@ -80,6 +80,7 @@ class MasterViewController: UIViewController, UITableViewDataSource, UITableView
     let candy: Indications
     if indexPath.section==0{
         cell.textLabel?.text=section1[indexPath.row].name
+        cell.detailTextLabel?.text=section1[indexPath.row].name
         return cell
     }else if isFiltering(){
         candy = filteredCandies[indexPath.row]
@@ -107,11 +108,12 @@ class MasterViewController: UIViewController, UITableViewDataSource, UITableView
         controller.navigationItem.leftItemsSupplementBackButton = true
       }
     }else if segue.identifier=="section2segue"{
-        if let s2v=segue.destination as? Section2ViewController{
-             s2v.Section1Index=sender as? Section1Index
+        let s2v = (segue.destination as! UINavigationController).topViewController as! Section2ViewController
+        let section1IndexName = sender as! UITableViewCell
+        print(section1IndexName.textLabel?.text)
+        s2v.section1Index = (section1IndexName.textLabel?.text)! //your sender is a UITableViewCell
             }
         }
-    }
 
   
   func filterContentForSearchText(_ searchText: String, scope: String = "All") {

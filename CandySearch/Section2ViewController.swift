@@ -5,17 +5,18 @@ class Section2ViewController: UIViewController {
     
     @IBOutlet weak var textlabel: UILabel!
     
-    var Section1Index : Section1Index? {
-        
+    var section1Index: String? {
         didSet {
             configureView()
+            print("DID SET CALLED \(section1Index)")
         }
     }
     func configureView() {
-        if let Section1Index = Section1Index {
+        if let section1IndexUnwrapped = section1Index {
+            print("Section name is: \(section1IndexUnwrapped)")
             if let textlabel = textlabel {
-                textlabel.text=Section1Index.name
-                print("hier ist:\(Section1Index.name)")
+                textlabel.text = section1IndexUnwrapped
+                print("hier ist:\(section1IndexUnwrapped)")
             }
         }
     }
@@ -24,7 +25,6 @@ class Section2ViewController: UIViewController {
         configureView()
         
     }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
